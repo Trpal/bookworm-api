@@ -1,10 +1,18 @@
 import express from "express";
 import path from "path";
+import mongoose from "mongoose";
 
 const app = express();
+mongoose.connect("mongodb://localhost/bookworm", {
+	useMongoClient: true
+});
 
 app.post("/api/auth", (req, res) => {
-	res.status(400).json({ errors: { global: "Invalid Credentials" } });
+	res.status(400).json({
+		errors: {
+			global: "Invalid Credentials"
+		}
+	});
 });
 
 app.get("/*", (req, res) => {
